@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="title"> Calculadora - IMC </div>
+        <div class="input">
+            <label>Nome:</label>
+            <input type="text" id='nome'>
+        </div>
+        <div class="input">
+            <label>Altura:</label>
+            <input type="number" id='altura'>
+        </div>
+        <div class="input">
+            <label>Peso:</label>
+            <input type="number" id='peso'>
+        </div>
+        <button id='calcular'>Calcular</button>
+
+        <div class="result" id='resultado'></div>
+      </div>
+    </main>
+    <script>
+
+const calcular = document.getElementById('calcular');
+
+function imc () {
+    const nome = document.getElementById('nome').value
+    const altura = +document.getElementById('altura').value
+    const peso = +document.getElementById('peso').value
+    const resultado = document.getElementById('resultado')
+
+      if (nome !== '' && altura !== '' && peso !== '') {
+        
+        const valorIMC = (peso / (altura * altura)).toFixed(2)
+
+        
+
+        let classificacao = '';
+         if (valorIMC < 18.8) {
+            classificacao = 'abaixo do peso'
+         } else if (valorIMC < 25){
+          classificacao = 'saudável'
+         } else {
+          classificacao = 'fodido'
+         }
+
+         resultado.innerHTML = `${nome} eu imc é ${valorIMC}, você está ${classificacao}`
+
+      } else {
+        alert ('Preencha os campos')
+      }
+
+     }
+
+     calcular.addEventListener ('click', imc)
+
+    </script>
+  </body>
+</html>
